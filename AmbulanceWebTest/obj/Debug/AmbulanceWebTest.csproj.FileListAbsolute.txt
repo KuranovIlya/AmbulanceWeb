@@ -1,0 +1,12 @@
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.exe.config
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.exe
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.pdb
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebLibrary.dll
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebLibrary.pdb
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.AssemblyReference.cache
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.Properties.Resources.resources
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.GenerateResource.cache
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.CoreCompileInputs.cache
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.CopyComplete
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.exe
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.pdb

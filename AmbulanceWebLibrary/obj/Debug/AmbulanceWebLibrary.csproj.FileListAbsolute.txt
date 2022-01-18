@@ -1,0 +1,6 @@
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\AmbulanceWebLibrary.dll
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\AmbulanceWebLibrary.pdb
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.AssemblyReference.cache
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CoreCompileInputs.cache
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.dll
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.pdb
