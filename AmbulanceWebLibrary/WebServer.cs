@@ -1,32 +1,51 @@
-﻿using System;
+﻿using AmbulanceWebLibrary.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.ServiceModel.Web;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AmbulanceWebLibrary
 {
     [ServiceContract]
     public interface IService
     {
-        [OperationContract]
-        [WebGet]
         //[WebInvoke(Method = "GET",
         //   RequestFormat = WebMessageFormat.Json,
         //   ResponseFormat = WebMessageFormat.Json)]
-        string CheckConnection();
+        [OperationContract]
+        [WebGet]
+        List<WorkTeam> WorkTeams();
+
+        [OperationContract]
+        [WebGet]
+        string Authentication(string login, string password, int team_id);
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
     public class SimplexAmbulanceService : IService
     {
-        public string CheckConnection()
+        SQLServer sql = new SQLServer();
+        TokenService tokenService = new TokenService();
+
+        public string Authentication(string login, string password, int team_id)
         {
-            return "123";
+            // Worker worker = sql.WorkerAuthentication("Юров", "", 5);
+            Worker worker = sql.WorkerAuthentication(login, password, team_id);
+
+            string token = tokenService.GenerateToken(worker);
+
+            return token;
         }
+
+        public List<WorkTeam> WorkTeams()
+        {
+            List<WorkTeam> teams = sql.GetAllTeams();
+
+            return teams;
+        }
+
     }
     public class WebServer
     {

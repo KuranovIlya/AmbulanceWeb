@@ -4,3 +4,12 @@ D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CoreCompileInputs.cache
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.dll
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\AmbulanceWebLibrary.dll
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\AmbulanceWebLibrary.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csprojAssemblyReference.cache
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CoreCompileInputs.cache
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.dll
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.xml
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CopyComplete

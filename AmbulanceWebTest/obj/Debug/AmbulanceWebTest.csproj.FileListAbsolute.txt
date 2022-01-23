@@ -10,3 +10,17 @@ D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.cspro
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.CopyComplete
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.exe
 D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.exe.config
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.exe
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebTest.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebLibrary.dll
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\AmbulanceWebLibrary.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csprojAssemblyReference.cache
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.Properties.Resources.resources
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.GenerateResource.cache
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.CoreCompileInputs.cache
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.csproj.CopyComplete
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.exe
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.pdb
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.dll
+D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.xml
