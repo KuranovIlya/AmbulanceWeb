@@ -21,22 +21,34 @@ namespace AmbulanceWebLibrary
         [OperationContract]
         [WebGet]
         string Authentication(string login, string password, int team_id);
+
+        [OperationContract]
+        [WebGet]
+        bool TokenVerification(string token);
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
     public class SimplexAmbulanceService : IService
     {
         SQLServer sql = new SQLServer();
-        TokenService tokenService = new TokenService();
 
         public string Authentication(string login, string password, int team_id)
         {
             // Worker worker = sql.WorkerAuthentication("Юров", "", 5);
-            Worker worker = sql.WorkerAuthentication(login, password, team_id);
-
+            Worker worker = sql.WorkerAuthentication(login, password ?? "", team_id);
+            TokenService tokenService = TokenService.getInstance();
             string token = tokenService.GenerateToken(worker);
 
+            bool result = tokenService.CheckToken(token);
+
             return token;
+        }
+
+        public bool TokenVerification(string token)
+        {
+            TokenService tokenService = TokenService.getInstance();
+            bool result = tokenService.CheckToken(token);
+            return result;
         }
 
         public List<WorkTeam> WorkTeams()
@@ -51,6 +63,7 @@ namespace AmbulanceWebLibrary
     {
         Uri uri;
         ServiceHost host;
+        TokenService tokenService = new TokenService();
 
 
         public bool Start()

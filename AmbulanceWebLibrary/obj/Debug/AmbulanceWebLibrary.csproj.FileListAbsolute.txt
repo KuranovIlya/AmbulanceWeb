@@ -13,3 +13,6 @@ D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\Amb
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.dll
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.xml
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CopyComplete
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.dll
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\bin\Debug\Newtonsoft.Json.xml
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebLibrary\obj\Debug\AmbulanceWebLibrary.csproj.CopyComplete
