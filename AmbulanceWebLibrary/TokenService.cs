@@ -3,7 +3,6 @@ using System;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
-using System.ComponentModel;
 
 namespace AmbulanceWebLibrary
 {
@@ -45,13 +44,20 @@ namespace AmbulanceWebLibrary
 
         public bool CheckToken(string token)
         {
-            int position = token.LastIndexOf(".");
-            string firstPart = token.Substring(0, position);
-            string secondPart = token.Substring(position + 1);
+            try
+            {
+                int position = token.LastIndexOf(".");
+                string firstPart = token.Substring(0, position);
+                string secondPart = token.Substring(position + 1);
 
-            string tokenSignatureEncode = ConvertToBase64String_signature(firstPart);
+                string tokenSignatureEncode = ConvertToBase64String_signature(firstPart);
 
-            return String.Compare(tokenSignatureEncode, secondPart) == 0;
+                return String.Compare(tokenSignatureEncode, secondPart) == 0;
+            } catch
+            {
+                return false;
+            }
+            
         }
 
         string ConvertToBase64String(string tokenPart)

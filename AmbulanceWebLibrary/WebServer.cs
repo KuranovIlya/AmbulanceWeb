@@ -1,10 +1,12 @@
 ﻿using AmbulanceWebLibrary.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.ServiceModel.Web;
+using System.Text;
 
 namespace AmbulanceWebLibrary
 {
@@ -20,11 +22,15 @@ namespace AmbulanceWebLibrary
 
         [OperationContract]
         [WebGet]
-        string Authentication(string login, string password, int team_id);
+        AuthResponse Authentication(string login, string password, int team_id);
 
         [OperationContract]
         [WebGet]
         bool TokenVerification(string token);
+
+        [OperationContract]
+        [WebGet]
+        List<Call> AmbulanceCalls(string token, int call_type, int team_id);
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
@@ -32,16 +38,37 @@ namespace AmbulanceWebLibrary
     {
         SQLServer sql = new SQLServer();
 
-        public string Authentication(string login, string password, int team_id)
+        public List<Call> AmbulanceCalls(string token, int call_type, int team_id)
         {
-            // Worker worker = sql.WorkerAuthentication("Юров", "", 5);
-            Worker worker = sql.WorkerAuthentication(login, password ?? "", team_id);
             TokenService tokenService = TokenService.getInstance();
-            string token = tokenService.GenerateToken(worker);
+            List<Call> calls = new List<Call>();
+            try
+            {
+                bool goodAuth = tokenService.CheckToken(token);
+                goodAuth = true;
+                if (goodAuth)
+                {
+                    calls.AddRange(sql.GetAmbCalls(call_type, team_id));                    
+                }
+                return calls;
+            } catch
+            {
+                return new List<Call>();
+            }                 
+        }
 
-            bool result = tokenService.CheckToken(token);
+        public AuthResponse Authentication(string login, string password, int team_id)
+        {
+            Worker worker = sql.WorkerAuthentication(login, password ?? "", team_id);
+            if (worker != null)
+            {
+                TokenService tokenService = TokenService.getInstance();
+                string token = tokenService.GenerateToken(worker);
 
-            return token;
+                string workerJson = JsonConvert.SerializeObject(worker);
+                return new AuthResponse(token, workerJson);
+            }
+            return new AuthResponse(null, null);
         }
 
         public bool TokenVerification(string token)

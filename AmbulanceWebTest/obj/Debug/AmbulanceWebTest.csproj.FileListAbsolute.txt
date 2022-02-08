@@ -24,3 +24,5 @@ D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\Ambula
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\obj\Debug\AmbulanceWebTest.pdb
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.dll
 D:\ИЛЬЯ\Работа\Assembla\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.xml
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.dll
+D:\Ilya\Ambulance\AmbulanceWeb\AmbulanceWebTest\bin\Debug\Newtonsoft.Json.xml
