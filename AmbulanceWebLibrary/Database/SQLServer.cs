@@ -11,7 +11,7 @@ namespace AmbulanceWebLibrary
 
         public SQLServer()
         {
-            connectionString = "Server=localhost\\SQLEXPRESS_12;Database=AmbulanceTest1;User Id=sa;Password=kuranov;";
+            connectionString = "Server=localhost\\SQLEXPRESS;Database=AmbulanceTest1;User Id=sa;Password=kuranov;";
         }
 
         public SQLServer(string host, string user, string dbname, string password)
@@ -29,7 +29,7 @@ namespace AmbulanceWebLibrary
                 {
                     conn.Open();
                     string query;
-                    query = "SELECT WORK_TEAM_ID, WORK_TEAM_NAME FROM WORK_TEAM";
+                    query = "SELECT WORK_TEAM_ID, WORK_TEAM_NAME FROM WORK_TEAM where WORK_TEAM_TYPE_ID = 3";
 
                     using (var command = new SqlCommand(query, conn))
                     {
@@ -43,7 +43,7 @@ namespace AmbulanceWebLibrary
                 }
 
                 return workTeams;
-            } catch(Exception ex)
+            } catch
             {
                 return workTeams;
             }
@@ -60,45 +60,45 @@ namespace AmbulanceWebLibrary
                     conn.Open();
                     
                     string query;
-                    query = "select AC.AMB_CALL_ID, ACL.AMB_CALL_LEV_NAME, ACT.AMB_CALL_TYPE_NAME, AC.AMB_CALL_DATETIME, ACS.AMB_CALL_STATE_NAME, " + 
-                        "dbo.GetFIO(AC.AMB_CALL_PATIENT_SURNAME, AC.AMB_CALL_PATIENT_NAME, AC.AMB_CALL_PATIENT_PATRONIMIC) as PATIENT_FIO, " +
-                        "AC.AMB_CALL_PATIENT_SEX, AC.AMB_CALL_PATIENT_BORN_DATE, AR.AMB_RIDE_ID, dbo.SHORT_ADDRESS_NAME(A.ADDR_ID, 1, 2, 0, 0) AS CALL_ADDRESS, AC.AMB_CALL_PHONE_NUM " + 
-                        "from AMB_CALL AC" + 
-                        "inner join AMB_CALL_LEVEL ACL on AC.AMB_CALL_LEV_ID = ACL.AMB_CALL_LEV_ID " + 
-                        "inner join AMB_CALL_TYPE ACT on AC.AMB_CALL_TYPE_ID = ACT.AMB_CALL_TYPE_ID" + 
-                        "inner join AMB_CALL_STATE ACS on AC.AMB_CALL_STATE_ID = ACS.AMB_CALL_STATE_ID " +
-                        "inner join ADDRESS A on AC.ADDR_ID = A.ADDR_ID " + 
-                        "left join AMB_RIDE AR on AR.AMB_CALL_ID = AC.AMB_CALL_ID " + 
-                        "where {0}";
+                    query = @"select AC.AMB_CALL_ID, ACL.AMB_CALL_LEV_NAME, ACT.AMB_CALL_TYPE_NAME, AC.AMB_CALL_DATETIME, ACS.AMB_CALL_STATE_NAME, 
+                        dbo.GetFIO(AC.AMB_CALL_PATIENT_SURNAME, AC.AMB_CALL_PATIENT_NAME, AC.AMB_CALL_PATIENT_PATRONIMIC) as PATIENT_FIO, 
+                        AC.AMB_CALL_PATIENT_SEX, AC.AMB_CALL_PATIENT_BORN_DATE, AR.AMB_RIDE_ID, dbo.SHORT_ADDRESS_NAME(A.ADDR_ID, 1, 2, 0, 0) AS CALL_ADDRESS, AC.AMB_CALL_PHONE_NUM 
+                        from AMB_CALL AC 
+                        inner join AMB_CALL_LEVEL ACL on AC.AMB_CALL_LEV_ID = ACL.AMB_CALL_LEV_ID 
+                        inner join AMB_CALL_TYPE ACT on AC.AMB_CALL_TYPE_ID = ACT.AMB_CALL_TYPE_ID 
+                        inner join AMB_CALL_STATE ACS on AC.AMB_CALL_STATE_ID = ACS.AMB_CALL_STATE_ID 
+                        inner join ADDRESS A on AC.ADDR_ID = A.ADDR_ID 
+                        left join AMB_RIDE AR on AR.AMB_CALL_ID = AC.AMB_CALL_ID 
+                        where {0}";
 
                     switch(call_type)
                     {
                         case 1:
                             {
-                                query = String.Format(query, "(AC.AMB_CALL_STATE_ID = 1 or AC.AMB_CALL_STATE_ID = 2) and getdate() <= dateadd(dd,2,AC.AMB_CALL_DATETIME)");
+                                query = String.Format(query, "AC.AMB_CALL_STATE_ID = 1 and dateadd(dd,-2,getdate()) <= AC.AMB_CALL_DATETIME");
                                 break;
                             }
                         case 2:
                             {
-                                query = String.Format(query, "(AC.AMB_CALL_STATE_ID = 1 or AC.AMB_CALL_STATE_ID = 2) and getdate() <= dateadd(dd,2,AC.AMB_CALL_DATETIME)");
+                                query = String.Format(query, "AR.WORK_TEAM_ID=@team_id and (AC.AMB_CALL_STATE_ID = 1 or AC.AMB_CALL_STATE_ID = 2) and dateadd(dd,-5,getdate()) <= AC.AMB_CALL_DATETIME");
                                 break;
                             }
                         case 3:
                             {
-                                query = String.Format(query, "AR.WORK_TEAM_ID=@team_id and AC.AMB_CALL_STATE_ID = 3 and getdate() <= dateadd(ww,1,AC.AMB_CALL_DATETIME)");
+                                query = String.Format(query, "AR.WORK_TEAM_ID=@team_id and AC.AMB_CALL_STATE_ID != 1 and AC.AMB_CALL_STATE_ID != 2 and dateadd(ww,-1,getdate()) <= AC.AMB_CALL_DATETIME");
                                 break;
                             }
                     }
 
-                    query = "select AC.AMB_CALL_ID, ACL.AMB_CALL_LEV_NAME, ACT.AMB_CALL_TYPE_NAME, AC.AMB_CALL_DATETIME, ACS.AMB_CALL_STATE_NAME, " +
-                        "dbo.GetFIO(AC.AMB_CALL_PATIENT_SURNAME, AC.AMB_CALL_PATIENT_NAME, AC.AMB_CALL_PATIENT_PATRONIMIC) as PATIENT_FIO, " +
-                        "AC.AMB_CALL_PATIENT_SEX, AC.AMB_CALL_PATIENT_BORN_DATE, AR.AMB_RIDE_ID, dbo.SHORT_ADDRESS_NAME(A.ADDR_ID, 1, 2, 0, 0) AS CALL_ADDRESS, AC.AMB_CALL_PHONE_NUM " +
-                        "from AMB_CALL AC " +
-                        "inner join AMB_CALL_LEVEL ACL on AC.AMB_CALL_LEV_ID = ACL.AMB_CALL_LEV_ID " +
-                        "inner join AMB_CALL_TYPE ACT on AC.AMB_CALL_TYPE_ID = ACT.AMB_CALL_TYPE_ID " +
-                        "inner join AMB_CALL_STATE ACS on AC.AMB_CALL_STATE_ID = ACS.AMB_CALL_STATE_ID " +
-                        "inner join ADDRESS A on AC.ADDR_ID = A.ADDR_ID " +
-                        "left join AMB_RIDE AR on AR.AMB_CALL_ID = AC.AMB_CALL_ID ";
+                    query = @"select AC.AMB_CALL_ID, ACL.AMB_CALL_LEV_NAME, ACT.AMB_CALL_TYPE_NAME, AC.AMB_CALL_DATETIME, ACS.AMB_CALL_STATE_NAME, 
+                        dbo.GetFIO(AC.AMB_CALL_PATIENT_SURNAME, AC.AMB_CALL_PATIENT_NAME, AC.AMB_CALL_PATIENT_PATRONIMIC) as PATIENT_FIO, 
+                        AC.AMB_CALL_PATIENT_SEX, AC.AMB_CALL_PATIENT_BORN_DATE, AR.AMB_RIDE_ID, dbo.SHORT_ADDRESS_NAME(A.ADDR_ID, 1, 2, 0, 0) AS CALL_ADDRESS, AC.AMB_CALL_PHONE_NUM 
+                        from AMB_CALL AC 
+                        inner join AMB_CALL_LEVEL ACL on AC.AMB_CALL_LEV_ID = ACL.AMB_CALL_LEV_ID 
+                        inner join AMB_CALL_TYPE ACT on AC.AMB_CALL_TYPE_ID = ACT.AMB_CALL_TYPE_ID 
+                        inner join AMB_CALL_STATE ACS on AC.AMB_CALL_STATE_ID = ACS.AMB_CALL_STATE_ID 
+                        inner join ADDRESS A on AC.ADDR_ID = A.ADDR_ID 
+                        left join AMB_RIDE AR on AR.AMB_CALL_ID = AC.AMB_CALL_ID";
 
                     using (var command = new SqlCommand(query, conn))
                     {
@@ -184,7 +184,6 @@ namespace AmbulanceWebLibrary
                                 amb_ride_id,
                                 call_address,
                                 amb_call_phone_num));
-                            //Worker worker = new Worker(reader.GetInt32(0), String.Format("{0} {1} {2}", reader.GetString(1), reader.GetString(2), reader.GetString(3)), new WorkTeam(reader.GetInt32(4), reader.GetString(5)));
                         }
                         reader.Close();
                     }
@@ -192,7 +191,7 @@ namespace AmbulanceWebLibrary
 
 
                 return calls;
-            } catch(Exception ex)
+            } catch
             {
                 return null;
             } 
@@ -234,6 +233,8 @@ namespace AmbulanceWebLibrary
                 return null;
             }
         }
+
+
 
 
     }

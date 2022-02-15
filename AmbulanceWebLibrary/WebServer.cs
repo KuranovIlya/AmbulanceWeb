@@ -30,7 +30,7 @@ namespace AmbulanceWebLibrary
 
         [OperationContract]
         [WebGet]
-        List<Call> AmbulanceCalls(string token, int call_type, int team_id);
+        List<Call> AmbulanceCalls(string token, int call_type);
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
@@ -38,17 +38,17 @@ namespace AmbulanceWebLibrary
     {
         SQLServer sql = new SQLServer();
 
-        public List<Call> AmbulanceCalls(string token, int call_type, int team_id)
+        public List<Call> AmbulanceCalls(string token, int call_type)
         {
             TokenService tokenService = TokenService.getInstance();
             List<Call> calls = new List<Call>();
             try
             {
                 bool goodAuth = tokenService.CheckToken(token);
-                goodAuth = true;
+                //goodAuth = true;
                 if (goodAuth)
                 {
-                    calls.AddRange(sql.GetAmbCalls(call_type, team_id));                    
+                    calls.AddRange(sql.GetAmbCalls(call_type, tokenService.GetTeamFromToken(token)));                    
                 }
                 return calls;
             } catch
@@ -64,7 +64,7 @@ namespace AmbulanceWebLibrary
             {
                 TokenService tokenService = TokenService.getInstance();
                 string token = tokenService.GenerateToken(worker);
-
+                
                 string workerJson = JsonConvert.SerializeObject(worker);
                 return new AuthResponse(token, workerJson);
             }
@@ -111,7 +111,7 @@ namespace AmbulanceWebLibrary
 
                 host.Open();
             }
-            catch (Exception exc)
+            catch
             {
             }
             return true;

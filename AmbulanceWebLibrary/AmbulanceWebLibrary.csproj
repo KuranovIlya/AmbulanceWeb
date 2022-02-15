@@ -51,6 +51,7 @@
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="Models\AuthResponse.cs" />
     <Compile Include="Models\Call.cs" />
+    <Compile Include="Models\GenericResponse.cs" />
     <Compile Include="Models\Worker.cs" />
     <Compile Include="Database\SQLServer.cs" />
     <Compile Include="TokenService.cs" />

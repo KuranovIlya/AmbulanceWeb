@@ -3,6 +3,7 @@ using System;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json.Linq;
 
 namespace AmbulanceWebLibrary
 {
@@ -58,6 +59,32 @@ namespace AmbulanceWebLibrary
                 return false;
             }
             
+        }
+
+        public int GetTeamFromToken(string token)
+        {
+            try
+            {
+                int position = token.LastIndexOf(".");
+                string firstPart = token.Substring(0, position);
+
+                string payload = firstPart.Substring(token.IndexOf(".") + 1);
+                payload = payload.Substring(0, payload.Length);
+                payload = payload.Replace('-', '+').Replace('_', '/');
+                payload += "=";
+                byte[] data = Convert.FromBase64String(payload);
+                string decodedString = Encoding.UTF8.GetString(data);
+
+                var worker = JObject.Parse(decodedString);
+                var a = worker["worker"]["workTeam"]["id"];
+
+
+                return Convert.ToInt32(a);
+            }
+            catch
+            {
+                return -1;
+            }
         }
 
         string ConvertToBase64String(string tokenPart)
